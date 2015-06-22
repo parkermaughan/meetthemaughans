@@ -5,13 +5,13 @@ Powerful shell for rapidly deploying your WordPress projects.
 * Project: [https://github.com/parkermaughan/MeetTheMaughans.git](https://github.com/parkermaughan/MeetTheMaughans.git)
 * Website: [meetthemaughans.com](http://meetthemaughans.com)
 *
-* Author : [parkermaughan](http://parkermaughan.com) // [@toddmotto](http://twitter.com/toddmotto)
+* Author : [parkermaughan](http://parkermaughan.com)
 
 
 ## Getting Started with HTML5 Blank
 
 * Go to the Wordpress' theme folder (`.../wp-content/themes`)
-* In CLI, run: `git clone https://github.com/toddmotto/html5blank.git`
+* In CLI, run: `git clone https://github.com/parkermaughan/MeetTheMaughans.git`
 * `cd html5blank` and then `npm install` and then `bower install` (you'll need gulp install as well)
 * `gulp watch` will enable `livereload` and development version
 * `gulp build` for distribute version with minified `js` and `css` files
@@ -76,6 +76,5 @@ There are a few ways to get involved, submit a Pull Request, or submit a comment
 * Author support showing the author
 * Demo Custom Page Template for expansion
 
-## Contributors
-Thanks to all the awesome [contributors](https://github.com/toddmotto/html5blank/graphs/contributors)!
+
 # MeetTheMaughans
