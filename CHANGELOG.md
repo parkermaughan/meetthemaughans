@@ -1,4 +1,4 @@
-### [HTML5 Blank](http://html5blank.com) Changelog
+### [MeetTheMaughans](http://MeetTheMaughans.com) Changelog
 
 ## MASTER
 
