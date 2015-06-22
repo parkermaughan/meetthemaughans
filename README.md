@@ -1,11 +1,11 @@
-# [HTML5 Blank](http://html5blank.com)
+# [MeetTheMaughans](http://meetthemaughans.com)
 
 Powerful shell for rapidly deploying your WordPress projects.
 
-* Project: [github.com/toddmotto/html5blank](https://github.com/toddmotto/html5blank)
-* Website: [html5blank.com](http://html5blank.com)
-* Twitter: [@html5blank](http://twitter.com/html5blank)
-* Author : [Todd Motto](http://toddmotto.com) // [@toddmotto](http://twitter.com/toddmotto)
+* Project: [https://github.com/parkermaughan/MeetTheMaughans.git](https://github.com/parkermaughan/MeetTheMaughans.git)
+* Website: [meetthemaughans.com](http://meetthemaughans.com)
+*
+* Author : [parkermaughan](http://parkermaughan.com) // [@toddmotto](http://twitter.com/toddmotto)
 
 
 ## Getting Started with HTML5 Blank
