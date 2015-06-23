@@ -1,0 +1,16 @@
+	#product_meta h4 {padding:10px 10px; border:1px solid #eee; background: #f6f6f6;margin-bottom:0;}
+	#product_meta button.meta-image-button {margin: 0 0 0 .75em!important;/* top:0; left:auto; position: absolute; */}
+	#product_meta button.meta-image-button:after {font-family:"Dashicons"; content: "\f306";padding:; font-size: 24px;display: inline-block; }
+	#product_meta a.add-item {border:1px solid #ddd; background: #eee; width: 100%; padding:5px 10px; text-align: center; text-decoration: none; border-radius: 3px;}
+	#product_meta hr {border:none; border-bottom:1px solid #f1f1f1;}
+	#product_meta a[class^="add-"] {color:#333; }
+	#product_meta a[class^="remove-"] {color: #d54e21;font-weight: 300!important;}
+/* 	.wp-editor-expand #wp-content-editor-container,.wp-editor-container textarea.wp-editor-area {height: 300px!important;} */
+	#product_meta button.meta-image-button.button {position: absolute; top: 0;}
+	#product_meta  p {position: relative;}
+	#product_meta  p > label {width: 70px; display: inline-block;text-align: right; margin: 0 1em 0 0;}
+	#product_meta  p > label:after {content:":"}
+	#product_meta  p > input {width: 200px; display: inline-block;}
+	#product_meta .section {width:100%; clear:both;}
+	#product_meta .col-1-2 {float:left; width:50%;}
+	#product_meta .col-2-2 {float:left; width:50%; clear:right;}
