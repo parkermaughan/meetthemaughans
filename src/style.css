@@ -1,9 +1,10 @@
 /*!
- * Theme Name: MeetTheMaughans
- * Description: MeetTheMaughans
+ * Theme Name: HTML5 Blank
+ * Theme URI: http://html5blank.com
+ * Description: HTML5 Blank WordPress Theme
  * Version: 1.5.0
- * Author: Parker Maughan
- * Author URI: http://parkermaughan.com
+ * Author: Todd Motto (@toddmotto)
+ * Author URI: http://toddmotto.com
  * Tags: Blank, HTML5, CSS3
  *
  * License: MIT
@@ -36,18 +37,10 @@
  * ---
  * Declare fonts here
  */
-/*
-@font-face {
-  font-family: "Font-Name";
-  src: url("fonts/font-name.eot");
-  src: url("fonts/font-name.eot?#iefix") format("embedded-opentype"),
-    url("fonts/font-name.woff") format("woff"),
-    url("fonts/font-name.ttf") format("truetype"),
-    url("fonts/font-name.svg#font-name") format("svg");
-  font-weight: normal;
-  font-style: normal;
+h1, h2, h3, h4 {
+  font-family: 'Archivo Black', sans-serif;
 }
-*/
+
 /**
  * partials/reset
  * ---
@@ -67,11 +60,11 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Open Sans", sans-serif;
-  font-size: 140%;
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: 165%;
   line-height: 1.5;
-  color: #444444;
-  background-color: white;
+  color: #444;
+  background-color: #fff;
 }
 
 img {
@@ -80,7 +73,7 @@ img {
 }
 
 a {
-  color: #444444;
+  color: #444;
   text-decoration: none;
 }
 a:focus, a:hover {
@@ -94,14 +87,14 @@ input[type="search"] {
 }
 
 ::-moz-selection {
-  background-color: #04a4cc;
-  color: white;
+  background-color: #04A4CC;
+  color: #fff;
   text-shadow: none;
 }
 
 ::selection {
-  background-color: #04a4cc;
-  color: white;
+  background-color: #04A4CC;
+  color: #fff;
   text-shadow: none;
 }
 
@@ -137,7 +130,7 @@ input[type="search"] {
  * Gallery & images
  */
 .wp-caption {
-  background: white;
+  background: #fff;
   border: thin solid #F0F0F0;
   max-width: 95%;
   padding: 5px 5px;
@@ -156,7 +149,7 @@ input[type="search"] {
 .gallery-caption {
   margin: 0;
   padding: 0 5px 5px;
-  font-size: 140%;
+  font-size: 165%;
   line-height: 1.5;
 }
 
@@ -190,7 +183,7 @@ input[type="search"] {
 }
 
 /**
- * partial/header
+ * partials/header
  * ---
  */
 /**
