@@ -6,6 +6,7 @@
  */
 
 require_once "modules/is-debug.php";
+require_once "modules/slider/index.php";
 
 /*------------------------------------*\
     External Modules/Files
@@ -432,8 +433,42 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 \*------------------------------------*/
 
 // Create 1 Custom Post type for a Demo, called HTML5-Blank
-
-
+function create_post_type_html5()
+{
+    register_taxonomy_for_object_type('category', 'products'); // Register Taxonomies for Category
+    register_taxonomy_for_object_type('post_tag', 'products');
+    register_post_type('products', // Register Custom Post Type
+         array(
+        'labels' => array(
+            'name' => __('Blog', 'products'),
+            'singular_name' => __('Product Postco', 'products'),
+            'add_new' => __('Add New', 'products'),
+            'add_new_item' => __('Add New Blog Post', 'products'),
+            'edit' => __('Edit', 'products'),
+            'edit_item' => __('Edit Blog Post', 'products'),
+            'new_item' => __('New Blog Post', 'products'),
+            'view' => __('View Blog Post', 'products'),
+            'view_item' => __('View Blog Post', 'products'),
+            'search_items' => __('Search Blog Post', 'products'),
+            'not_found' => __('No Product Posts found', 'products'),
+            'not_found_in_trash' => __('No Product Posts found in Trash', 'products')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+        'taxonomies' => array(
+            'post_tag',
+            'category'
+        ) // Add Category and Post Tags support
+    ));
+}
 
 /*------------------------------------*\
     ShortCode Functions
