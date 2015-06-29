@@ -14,9 +14,18 @@
 =============================================*/
 
 function product_custom_meta() {
-	add_meta_box( 'product_meta', __( 'Product Options'), 'product_meta_callback', 'products' , 'normal', 'high');
+	
+	add_meta_box( 'product_meta', __( 'Product Options'), 'product_meta_callback', 'post' , 'normal', 'high');
+
 }
 add_action( 'add_meta_boxes', 'product_custom_meta' );
+
+function page_custom_meta() {
+	
+	add_meta_box( 'product_meta', __( 'Product Options'), 'product_meta_callback', 'page' , 'normal', 'high');
+
+}
+add_action( 'add_meta_boxes', 'page_custom_meta' );
 
 function underscore($string){
 	$content = preg_replace('/\s+/', '_', $string);
@@ -30,7 +39,16 @@ function product_meta_callback( $post ) {
 	$content  = '<div id="product_meta">';
 	$content .= '<div class="grid">';
 	$content .= '<h4>General Slide Information</h4>';
-
+	$cf_name = 'journal';	
+	$content .= '<p>';
+	$content .= '<label>'.$cf_name.'</label>';
+	$cf_name  = underscore($cf_name);
+	$content .= '<input type="checkbox" ' . 'name="'.$cf_name.'"' . 'value=""';
+	if(isset ( $cf_value[$cf_name] ) ) {
+	$content .= checked( $cf_value[$cf_name][0], 'yes', false);
+	}
+	$content .= ' />';
+	$content .= '</p>';
 	
 	
 
@@ -43,7 +61,10 @@ function product_meta_callback( $post ) {
 		
 		$content .= '<div class="col-1-3">';
 		$content .= '<h4>Slide Option ' . $i . '</h4>';
+		
 
+		
+	
 		$cf_name = 'title';
 		$content .= '<p>';
 		$content .= '<label>'.$cf_name.'</label>';
@@ -59,6 +80,8 @@ function product_meta_callback( $post ) {
 		$content .= '<input type="text" step="any"' . 'name="'.$cf_name.'"' . 'value="';
 		$content .= (isset( $cf_value[$cf_name]) ? $cf_value[$cf_name][0] : '') . '"/>';
 		$content .= '</p>';
+
+		
 
 	
 		$cf_name = 'slide image';		
@@ -101,23 +124,19 @@ function product_meta_save( $post_id ) {
 	// Checks for input and sanitizes/saves if needed
 	$cf_value = get_post_meta( $post->ID );
 
-	if( isset( $_POST[ 'retail_price' . $i ] ) ) {
-		update_post_meta( $post_id, 'retail_price' . $i, sanitize_text_field( $_POST[ 'retail_price' . $i ] ) );
-	}
-
-	if( isset( $_POST[ 'in_stock' ] ) ) {
-    	update_post_meta( $post_id, 'in_stock', 'yes' );
+	if( isset( $_POST[ 'journal' ] ) ) {
+    	update_post_meta( $post_id, 'journal', 'yes' );
 	} else {
-    	update_post_meta( $post_id, 'in_stock', 'no' );
+    	update_post_meta( $post_id, 'journal', 'no' );
 	}
 
-	if( isset( $_POST[ 'official_site' ] ) ) {
-    	update_post_meta( $post_id, 'official_site', 'yes' );
+	if( isset( $_POST[ 'journal' ] ) ) {
+    	update_post_meta( $post_id, 'journal', 'yes' );
 	} else {
-    	update_post_meta( $post_id, 'official_site', 'no' );
+    	update_post_meta( $post_id, 'journal', 'no' );
 	}
 
-	update_post_meta( $post_id, 'itemCount', sanitize_text_field( $_POST[ 'itemCount'] ) );
+	
 
 	$i = 1;
 	while(isset($_POST['title'. '_' .$i])) {
@@ -179,7 +198,20 @@ add_action( 'admin_enqueue_scripts', 'product_custom_fields_styles' );
 //enqueue script for module and image loader
 function product_image_enqueue() {
 	global $typenow;
-	if( $typenow == 'products' ) {
+	if( $typenow == 'post' ) {
+		wp_enqueue_media();
+
+		wp_register_script( 'meta-box-image', get_template_directory_uri() . '/modules/slider/scrpit.js', array( 'jquery' ) );
+		wp_localize_script( 'meta-box-image', 'meta_image',
+			array(
+				'title' => __( 'Choose or Upload an Image', 'product-textdomain' ),
+				'button' => __( 'Use this image', 'product-textdomain' ),
+			)
+		);
+		wp_enqueue_script( 'meta-box-image' );
+	}
+
+	if( $typenow == 'page' ) {
 		wp_enqueue_media();
 
 		wp_register_script( 'meta-box-image', get_template_directory_uri() . '/modules/slider/scrpit.js', array( 'jquery' ) );
