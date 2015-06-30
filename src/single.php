@@ -11,7 +11,8 @@
 				</time>
 			</span>
 <?php
-
+  echo '<div class="slider-wrapper">';
+  echo '<div id="slider">';
 
 	global $post;
 	$post_id= $post->ID;
@@ -21,21 +22,21 @@
 			$title = get_post_meta( $post_id, 'title' . '_' . $i, true);
 			$image = get_post_meta( $post_id, 'slide_image' . '_' . $i, true);
 			$journal = get_post_meta( $post_id, 'journal', true);
-
 	$i++;
-	echo '<div class="bx-wrapper">';
-	echo '<div class="bx-controls-auto">';
-echo '<ul class="bxslider">';
-echo '<li>';
-echo '<h3 class="title">'.$title.'</h3>';
-echo '<p class="discription">'.$description.'</p>';
-echo '<img src='. $image .' class="buyproducts">';
-echo '</li>';
-echo '</ul>';
-echo '</div>';
-echo '</div>';
+  echo '<div class='."slide".$i.'>';
+  echo '<h3 class="title">'.$title.'</h3>';
+  echo '<p class="discription">'.$description.'</p>';
+  echo '<img src='. $image .' class="buyproducts">';
+ echo '</div>';
+
 }
+ echo '</div>';
+echo '<div id="slider-direction-nav"></div>';
+echo '<div id="slider-control-nav"></div>';
+echo '</div>';
+
 	?>
+	
 	
 <?php the_content(); // Dynamic Content ?>
 
@@ -56,5 +57,12 @@ echo '</div>';
 	</main>
 
 
-
+ <script type="text/javascript">
+    $(document).ready(function() {
+        var slider = $('#slider').leanSlider({
+            directionNav: '#slider-direction-nav',
+            controlNav: '#slider-control-nav'
+        });
+    });
+    </script>
 

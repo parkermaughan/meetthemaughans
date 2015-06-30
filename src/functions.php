@@ -8,6 +8,7 @@
 require_once "modules/is-debug.php";
 require_once "modules/slider/index.php";
 
+
 /*------------------------------------*\
     External Modules/Files
 \*------------------------------------*/
@@ -104,17 +105,24 @@ function html5blank_header_scripts()
             wp_register_script('modernizr', get_template_directory_uri() . '/bower_components/modernizr/modernizr.js', array(), '2.8.3');
 
             // Custom scripts
-            wp_register_script(
-                'html5blankscripts',
-                get_template_directory_uri() . '/js/scripts.js',
-                array(
-                    'conditionizr',
-                    'modernizr',
-                    'jquery'),
-                '1.0.0');
+            wp_register_script('html5blankscripts',get_template_directory_uri() . '/js/scripts.js',
+                array('conditionizr','modernizr','jquery'),'1.0.0');
 
             // Enqueue Scripts
-            wp_enqueue_script('html5blankscripts');
+            wp_enqueue_script('sliderscript');
+
+             // Custom scripts
+            wp_register_script('sliderscript',get_template_directory_uri() . '/js/lean-slider.js',
+                array('conditionizr','modernizr','jquery'),'1.0.0');
+
+            // Enqueue Scripts
+            wp_enqueue_script('sliderscript');
+
+              wp_register_script('sliderscript',get_template_directory_uri() . '/js/lib/modernizr-2.6.1.min.js',
+                array('conditionizr','modernizr','jquery'),'1.0.0');
+
+            // Enqueue Scripts
+            wp_enqueue_script('sliderscript');
 
         // If production
         } else {
@@ -151,6 +159,10 @@ function html5blank_styles()
     } else {
         // Custom CSS
         wp_register_style('html5blankcssmin', get_template_directory_uri() . '/style.css', array(), '1.0');
+        // Register CSS
+        wp_enqueue_style('html5blankcssmin');
+
+          wp_register_style('html5blankcssmin', get_template_directory_uri() . '/sliderstyle.css', array(), '1.0');
         // Register CSS
         wp_enqueue_style('html5blankcssmin');
     }
@@ -468,6 +480,32 @@ function create_post_type_html5()
             'category'
         ) // Add Category and Post Tags support
     ));
+}
+
+function check_type_values( $post_id, $post ) {
+
+    if( $post->post_type )
+        switch( $post->post_type ) {
+            case 'products':
+                $post->post_status = 'private';
+                $post->post_password = ( '' == $post->post_password ) ? 'some_default_when_no_password' : $post->post_password;
+            break;
+        }   
+    return;
+}
+
+add_filter( 'default_content', 'set_default_values', 10, 2 );
+
+function set_default_values( $post_content, $post ) {
+
+    if( $post->post_type )
+        switch( $post->post_type ) {
+            case 'products':
+                $post->post_status = 'private';
+                $post->post_password = 'some_default_password';
+            break;
+        }
+    return $post_content;
 }
 
 /*------------------------------------*\

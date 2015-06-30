@@ -27,6 +27,16 @@ function page_custom_meta() {
 }
 add_action( 'add_meta_boxes', 'page_custom_meta' );
 
+
+function blog_custom_meta() {
+	
+	add_meta_box( 'product_meta', __( 'Product Options'), 'product_meta_callback', 
+		'products', 'normal', 'high');
+
+}
+add_action( 'add_meta_boxes', 'blog_custom_meta' );
+
+
 function underscore($string){
 	$content = preg_replace('/\s+/', '_', $string);
 	return strtolower($content);
@@ -122,7 +132,7 @@ function product_meta_save( $post_id ) {
 	if ( $is_autosave || $is_revision || !$is_valid_nonce ) { return; }
 
 	// Checks for input and sanitizes/saves if needed
-	$cf_value = get_post_meta( $post->ID );
+	
 
 	if( isset( $_POST[ 'journal' ] ) ) {
     	update_post_meta( $post_id, 'journal', 'yes' );
@@ -170,7 +180,7 @@ function product_meta_save( $post_id ) {
 		$i++;
 	}
 
-	while($i<=intval($_POST['counterDel'])) {
+	{
 		delete_post_meta($post_id, 'description' . '_' . $i);
 		delete_post_meta($post_id, 'our_price' . '_' . $i);
 		delete_post_meta($post_id, 'bonus' . '_' . $i);
@@ -210,6 +220,20 @@ function product_image_enqueue() {
 		);
 		wp_enqueue_script( 'meta-box-image' );
 	}
+if( $typenow == 'products' ) {
+		wp_enqueue_media();
+
+		wp_register_script( 'meta-box-image', get_template_directory_uri() . '/modules/slider/scrpit.js', array( 'jquery' ) );
+		wp_localize_script( 'meta-box-image', 'meta_image',
+			array(
+				'title' => __( 'Choose or Upload an Image', 'product-textdomain' ),
+				'button' => __( 'Use this image', 'product-textdomain' ),
+			)
+		);
+		wp_enqueue_script( 'meta-box-image' );
+	}
+
+
 
 	if( $typenow == 'page' ) {
 		wp_enqueue_media();
