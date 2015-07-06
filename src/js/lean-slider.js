@@ -1,13 +1,7 @@
 /*
- * Lean Slider v1.0.1
- * http://dev7studios.com/lean-slider
- *
- * Copyright 2012, Dev7studios
- * Free to use and abuse under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- */
 
-;(function($) {
+
+(function($) {
 
     $.fn.leanSlider = function(options) {
 
@@ -174,4 +168,4 @@
         afterLoad: function(){}
     };
 
-})(jQuery);
+})(jQuery); /****/

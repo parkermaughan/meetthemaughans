@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php if (is_front_page()) include_once "font-page.php";?>
+
 	<main role="main">
 		<!-- section -->
 		<section>
@@ -39,7 +39,16 @@ echo '</div>';//End Of slider-wrapper
 
 				<?php the_content(); ?>
 
-				
+				<ul>
+<?php
+$args = array( 'posts_per_page' => 5, 'orderby' => 'rand' );
+$rand_posts = get_posts( $args );
+foreach ( $rand_posts as $post ) : 
+  setup_postdata( $post ); ?>
+	<li><?php the_title(); ?><a class="hvr-float-shadow" href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?><ul class="hoverButton"><li class="magnify"></li><li class="flipPost"></li></ul></a></li>
+<?php endforeach; 
+wp_reset_postdata(); ?>
+</ul>
 
 				<?php edit_post_link(); ?>
 
@@ -67,4 +76,3 @@ echo '</div>';//End Of slider-wrapper
 
 
 <?php get_footer(); ?>
-

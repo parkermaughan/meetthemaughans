@@ -482,31 +482,7 @@ function create_post_type_html5()
     ));
 }
 
-function check_type_values( $post_id, $post ) {
 
-    if( $post->post_type )
-        switch( $post->post_type ) {
-            case 'products':
-                $post->post_status = 'private';
-                $post->post_password = ( '' == $post->post_password ) ? 'some_default_when_no_password' : $post->post_password;
-            break;
-        }   
-    return;
-}
-
-add_filter( 'default_content', 'set_default_values', 10, 2 );
-
-function set_default_values( $post_content, $post ) {
-
-    if( $post->post_type )
-        switch( $post->post_type ) {
-            case 'products':
-                $post->post_status = 'private';
-                $post->post_password = 'some_default_password';
-            break;
-        }
-    return $post_content;
-}
 
 /*------------------------------------*\
     ShortCode Functions
@@ -523,3 +499,6 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 {
     return '<h2>' . $content . '</h2>';
 }
+/*------------------------------------*\
+    User Long In
+\*------------------------------------*/

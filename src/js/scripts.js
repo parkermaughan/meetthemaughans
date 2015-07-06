@@ -1,16 +1,12 @@
 (function( root, $, undefined ) {
 	"use strict";
 
-	$(document).ready(function() {
-        var slider = $('#slider').leanSlider({
-            directionNav: '#slider-direction-nav',
-            controlNav: '#slider-control-nav'
-		// DOM ready, take it away
-	});
+$(document).ready(function(){
+    $('.hvr-float-shadow').hover(function(){
+        $('.magnify').fadeIn(500)
+    },function(){
+        $('.magnify').fadeOut(500)
+    })
+});
 
 } ( this, jQuery ));
-
- 
-     
-   
-   
