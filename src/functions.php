@@ -6,8 +6,7 @@
  */
 
 require_once "modules/is-debug.php";
-require_once "modules/slider/index.php";
-
+require_once "modules/banner/index.php";
 
 /*------------------------------------*\
     External Modules/Files
@@ -82,7 +81,7 @@ function html5blank_nav()
         'after'           => '',
         'link_before'     => '',
         'link_after'      => '',
-        'items_wrap'      => '<ul>%3$s</ul>',
+        'items_wrap'      => '<ul class="nav navbar-nav">%3$s</ul>',
         'depth'           => 0,
         'walker'          => ''
         )
@@ -115,6 +114,10 @@ function html5blank_header_scripts()
             wp_register_script('sliderscript',get_template_directory_uri() . '/js/lean-slider.js',
                 array('conditionizr','modernizr','jquery'),'1.0.0');
 
+             // Custom scripts
+            wp_register_script('sliderscript',get_template_directory_uri() . '/js/toggle.js',
+                array('conditionizr','modernizr','jquery'),'1.0.0');
+             
             // Enqueue Scripts
             wp_enqueue_script('sliderscript');
 
